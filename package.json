@@ -1,0 +1,28 @@
+{
+  "name": "project-one",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "cross-env ENV=staging playwright test",
+    "testheaded": "cross-env ENV=staging playwright test --headed --project=chromium",
+    "testheadedfirefox": "cross-env ENV=staging playwright test --headed --project=firefox",
+    "test:debug": "cross-env ENV=staging playwright test --debug",
+    "posttestheaded": "allure serve allure-results"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@playwright/test": "^1.59.1",
+    "@types/node": "^25.6.0",
+    "allure-commandline": "^2.38.1",
+    "allure-playwright": "^3.7.2",
+    "cross-env": "^10.1.0"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "winston": "^3.19.0"
+  }
+}
