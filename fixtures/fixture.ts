@@ -1,4 +1,5 @@
 import LoginPage from "../pages/loginPage";
+import HomePage from "../pages/homePage";
 import winston from 'winston';
 import { options } from "../config/loggerConfig";
 import {test as baseTest} from "@playwright/test";
@@ -9,6 +10,7 @@ import {test as baseTest} from "@playwright/test";
 
 const test = baseTest.extend<{
     loginPage: LoginPage
+    homePage: HomePage
     logger: winston.Logger;
     //add other pages here as well
     }>({
@@ -18,14 +20,11 @@ const test = baseTest.extend<{
 
     await use(logger);
   },
-
-
-
-
-    loginPage: async ({page}, use) => 
-    { 
-    await page.goto(process.env.URL ,{ waitUntil: 'domcontentloaded' });
-    await use(new LoginPage(page))
+    loginPage: async ({ page }, use) => {
+    await use(new LoginPage(page));
+    },
+    homePage: async ({ page }, use) => {
+    await use(new HomePage(page));
     }
     //need to add other pages here as well
     })

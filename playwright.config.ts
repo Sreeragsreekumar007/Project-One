@@ -31,6 +31,7 @@ export default defineConfig({
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
     trace: 'on-first-retry',
+    baseURL: process.env.URL,
   },
 
   
@@ -42,10 +43,10 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'] },
     },
 
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
+   // {
+     // name: 'firefox',
+     // use: { ...devices['Desktop Firefox'] },
+  //  },
 
     // {
     //   name: 'webkit',

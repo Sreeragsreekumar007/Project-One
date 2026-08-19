@@ -1,4 +1,4 @@
-import { Page } from '@playwright/test';
+import { Page,Locator } from '@playwright/test';
 
 export class HelperPage {
   protected page: Page;
@@ -10,12 +10,20 @@ export class HelperPage {
   async navigate(url: string) {
     await this.page.goto(url);
   }
+// For accepting both string and locator as input, we can use union type in typescript.
+  async waitAndClick(locator: string | Locator) {
 
-  async waitAndClick(locator: string) {
-        const element = this.page.locator(locator);
-        await element.waitFor({
-            state: "visible", timeout: 20000
-        });
+    const element =
+        typeof locator === "string"
+            ? this.page.locator(locator)
+            : locator;
+
+    await element.waitFor({
+        state: "visible",
+        timeout: 20000
+    });
         await element.click();
     }
+
+  
 }
