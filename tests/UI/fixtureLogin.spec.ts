@@ -25,6 +25,13 @@ test.describe('Login Page Tests', () => {
     await page.context().storageState({ path: 'auth.json' });
     await browser.close();
     })
+    test('Verify successful login2', async ({ loginPage, logger, page, browser }) => {
+    await loginPage.enterCredentials(process.env.appusername!, process.env.apppassword!);
+    await loginPage.clickLoginButton();
+    logger.info('Successful login verified');
+    await page.context().storageState({ path: 'auth.json' });
+    await browser.close();
+    })
 })
 
 
